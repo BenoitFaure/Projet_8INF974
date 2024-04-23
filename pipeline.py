@@ -16,6 +16,8 @@ FASHIONMNIST_PATH = './data/FashionMNIST'
 BATCH_SIZE = 128
 SUBSET_SIZE = 1000
 
+MAX_EPOCHS = 100
+
 # Transformations to apply to the dataset
 transform = transforms.Compose([
     transforms.Resize(224),
@@ -58,7 +60,7 @@ def CIFAR10_EXP(lightning_model):
     trainloader, testloader = load_data(trainset, testset)
 
     # Run the experiment
-    trainer = L.Trainer()
+    trainer = L.Trainer(max_epochs=MAX_EPOCHS)
     trainer.fit(lightning_model, trainloader, testloader)
 
 # RUN MNIST EXPERIMENT
@@ -72,7 +74,7 @@ def MNIST_EXP(lightning_model):
     trainloader, testloader = load_data(trainset, testset)
 
     # Run the experiment
-    trainer = L.Trainer()
+    trainer = L.Trainer(max_epochs=MAX_EPOCHS)
     trainer.fit(lightning_model, trainloader, testloader)
 
 # RUN FashionMNIST EXPERIMENT
@@ -86,5 +88,5 @@ def FashionMNIST_EXP(lightning_model):
     trainloader, testloader = load_data(trainset, testset)
 
     # Run the experiment
-    trainer = L.Trainer()
+    trainer = L.Trainer(max_epochs=MAX_EPOCHS)
     trainer.fit(lightning_model, trainloader, testloader)
